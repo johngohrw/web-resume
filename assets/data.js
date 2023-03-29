@@ -35,7 +35,7 @@ export const data = {
             "title": "Accendo Technologies",
             "subtitle": "Intern Software Developer",
             "location": "Kuala Lumpur, Malaysia",
-            "date": "December 2017 to March 2018",
+            "date": "December 2017 - March 2018",
             "items": [
                 "FE development with React in an Agile team. Responsible for a print-friendly report generation feature.",
                 "Developed a web prototype in Vue.js for a talent management system for IJM Malaysia."
@@ -47,7 +47,7 @@ export const data = {
             "title": "Monash University",
             "subtitle": "Bachelor of Computer Science",
             "location": "Petaling Jaya, Malaysia",
-            "date": "February 2016 to May 2019",
+            "date": "February 2016 - May 2019",
             "items": [
                 "Majored in Advanced Algorithms.",
                 "Winner of MDEC's ‘The Grand Challenge 2018’ Hackathon from MDEC Malaysia.",
