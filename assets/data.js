@@ -46,7 +46,7 @@ export const data = {
         "monash": {
             "title": "Monash University",
             "subtitle": "Bachelor of Computer Science",
-            "location": "Kuala Lumpur, Malaysia",
+            "location": "Petaling Jaya, Malaysia",
             "date": "February 2016 to May 2019",
             "items": [
                 "Majored in Advanced Algorithms.",

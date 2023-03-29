@@ -17,8 +17,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link href="./figma.css" rel="stylesheet">
-    <link href="./main.css" rel="stylesheet">
+    <link href="./globals.css" rel="stylesheet">
+    <link href="./index.css" rel="stylesheet">
 </head>
 
 <body>
@@ -76,49 +76,16 @@
             </div>
             <div class="skills-list text-body" id="skills-list">
             </div>
-
         </section>
-
     </main>
 
-    <script src="./lib/handlebars.js"></script>
+    <script src="./lib/handlebars.runtime.min-v4.7.7.js"></script>
     <script type="module">
-        import { data } from "./data.js"
+        import { data } from "./assets/data.js"
+        import { skillsTemplate, sectionTemplate } from "./assets/precompiled.js"
 
-        const sectionTemplate = `
-            <h2 class="section-title text-section-title">{{title}}</h2>
-            {{#each experience}}
-                <div class="experience">
-                    <h3 class="with-underline text-experience-title">
-                        <span style="font-weight: 500;">{{this.title}}</span> - {{this.subtitle}}
-                    </h3>
-                    <div class="experience-subinfo text-subtitle">
-                        <div class="experience-date">{{this.date}}</div>
-                        <div class="location">{{this.location}}</div>
-                    </div>
-                    <ul class="experience-list text-body">
-                        {{#with this}}
-                            {{#each items}}
-                                <li>{{this}}</li>
-                            {{/each}}
-                        {{/with}}
-                    </ul>
-                </div>
-            {{/each}}
-        `
-
-        const skillsTemplate = `
-        {{#each skill}}
-            <div class="skills-item">
-                <div class="skills-level-box" style="background: var(--color-skill-{{this.skillLevel}})"></div>
-                <div class="skills-label">{{this.label}}</div>
-            </div>
-        {{/each}}
-        `
-
-        // compile the template
-        var sectionContent = Handlebars.compile(sectionTemplate);
-        var skillsContent = Handlebars.compile(skillsTemplate);
+        const sectionContent = Handlebars.template(sectionTemplate);
+        const skillsContent = Handlebars.template(skillsTemplate);
 
         // execute the compiled templates & append to DOM
         document.getElementById("work").innerHTML = sectionContent({ title: "RELEVANT EXPERIENCE", experience: data.work })
