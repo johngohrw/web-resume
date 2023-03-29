@@ -33,8 +33,6 @@ body {
     body {
         background: none;
         padding: 0;
-
-        /* border: 1px solid black; */
     }
 
     .page-frame {
@@ -43,8 +41,6 @@ body {
         padding: 0;
         background: none;
         box-shadow: none;
-
-        /* border: 1px solid black; */
     }
 
     .contact-label a {
@@ -54,7 +50,7 @@ body {
 }
 
 section {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .header-section {
@@ -64,7 +60,7 @@ section {
     align-items: flex-end;
 
     /* border: 1px solid lightgray; */
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .header-main {
@@ -98,10 +94,12 @@ section {
 .contact-label {}
 
 h2.section-title {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
-.experience {}
+.experience {
+    margin-bottom: 1.25rem;
+}
 
 .experience h3 {
     padding-bottom: 2px;
@@ -123,7 +121,53 @@ h2.section-title {
 .experience-date {}
 
 ul.experience-list {
-    padding-inline-start: 26px
+    padding-inline-start: 26px;
+    margin-block-start: 0.5em;
+    margin-block-end: 0em;
 }
 
 ul.experience-list li {}
+
+.skills-title-section {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    /* margin-bottom: 0.5rem; */
+}
+
+.skills-legend {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    height: 17px;
+}
+
+.skills-swatch {
+    display: flex;
+    margin: 0 10px;
+}
+
+.swatch {
+    width: 37px;
+    height: 12px;
+    -webkit-print-color-adjust: exact;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0.3rem;
+}
+
+.skills-item {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.skills-level-box {
+    width: 12px;
+    height: 12px;
+    margin-right: 8px;
+    -webkit-print-color-adjust: exact;
+}

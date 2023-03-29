@@ -26,7 +26,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <main class="page-frame">
+    <main class="page-frame" id="page">
         <header class="header-section">
             <div class="header-main">
                 <h1 class="text-header-title">John Goh Rengwu</h1>
@@ -56,71 +56,80 @@
                     <div class="contact-label text-contact-item">Kuala Lumpur, Malaysia</div>
                 </div>
             </div>
-
         </header>
-        <!-- <section>
-            <h2 class="section-title text-section-title">[Section Title]</h2>
-            <div class="experience">
-                <h3 class="with-underline text-experience-title">
-                    <span style="font-weight: 500;">[Experience Title]</span> - [Role]
-                </h3>
-                <div class="experience-subinfo text-subtitle">
-                    <div class="experience-date">[date]</div>
-                    <div class="location">[location]</div>
-                </div>
-                <ul class="experience-list text-body">
-                    <li>[item 1]</li>
-                    <li>[item 2]</li>
-                </ul>
-            </div>
-        </section> -->
+        <section id="work"></section>
+        <section id="education"></section>
         <section>
-            <h2 class="section-title text-section-title">RELEVANT EXPERIENCE</h2>
-            <div class="experience">
-                <h3 class="with-underline text-experience-title">
-                    <span style="font-weight: 500;">Flanksource</span> - Front-End Engineer & Designer
-                </h3>
-                <div class="experience-subinfo text-subtitle">
-                    <div class="experience-date">August 2020 - August 2021</div>
-                    <div class="location">(Remote) Johannesburg, South Africa</div>
+            <div class="skills-title-section">
+                <h2 class="section-title text-section-title">SKILLS & TECHNOLOGIES</h2>
+                <div class="skills-legend">
+                    <div class="skills-legend-label text-subtitle">rarely/past</div>
+                    <div class="skills-swatch">
+                        <div class="swatch" style="background: var(--color-skill-1)"></div>
+                        <div class="swatch" style="background: var(--color-skill-2)"></div>
+                        <div class="swatch" style="background: var(--color-skill-3)"></div>
+                        <div class="swatch" style="background: var(--color-skill-4)"></div>
+                        <div class="swatch" style="background: var(--color-skill-5)"></div>
+                    </div>
+                    <div class="skills-legend-label text-subtitle">often/current</div>
                 </div>
-                <ul class="experience-list text-body">
-                    <li>[item 1]</li>
-                    <li>[item 2]</li>
-                </ul>
             </div>
-            <div class="experience">
-                <h3 class="with-underline text-experience-title">
-                    <span style="font-weight: 500;">Flanksource</span> - Front-End Engineer & Designer
-                </h3>
-                <div class="experience-subinfo text-subtitle">
-                    <div class="experience-date">August 2020 - August 2021</div>
-                    <div class="location">(Remote) Johannesburg, South Africa</div>
-                </div>
-                <ul class="experience-list text-body">
-                    <li>[item 1]</li>
-                    <li>[item 2]</li>
-                </ul>
+            <div class="skills-list text-body" id="skills-list">
             </div>
-            <div class="experience">
-                <h3 class="with-underline text-experience-title">
-                    <span style="font-weight: 500;">Flanksource</span> - Front-End Engineer & Designer
-                </h3>
-                <div class="experience-subinfo text-subtitle">
-                    <div class="experience-date">August 2020 - August 2021</div>
-                    <div class="location">(Remote) Johannesburg, South Africa</div>
-                </div>
-                <ul class="experience-list text-body">
-                    <li>[item 1]</li>
-                    <li>[item 2]</li>
-                </ul>
-            </div>
+
         </section>
+
     </main>
 
+    <script src="./lib/handlebars.js"></script>
+    <script type="module">
+        import { data } from "./data.js"
 
+        const sectionTemplate = `
+            <h2 class="section-title text-section-title">{{title}}</h2>
+            {{#each experience}}
+                <div class="experience">
+                    <h3 class="with-underline text-experience-title">
+                        <span style="font-weight: 500;">{{this.title}}</span> - {{this.subtitle}}
+                    </h3>
+                    <div class="experience-subinfo text-subtitle">
+                        <div class="experience-date">{{this.date}}</div>
+                        <div class="location">{{this.location}}</div>
+                    </div>
+                    <ul class="experience-list text-body">
+                        {{#with this}}
+                            {{#each items}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                        {{/with}}
+                    </ul>
+                </div>
+            {{/each}}
+        `
 
-    <script src="" async defer></script>
+        const skillsTemplate = `
+        {{#each skill}}
+            <div class="skills-item">
+                <div class="skills-level-box" style="background: var(--color-skill-{{this.skillLevel}})"></div>
+                <div class="skills-label">{{this.label}}</div>
+            </div>
+        {{/each}}
+        `
+
+        // compile the template
+        var sectionContent = Handlebars.compile(sectionTemplate);
+        var skillsContent = Handlebars.compile(skillsTemplate);
+
+        // execute the compiled templates & append to DOM
+        document.getElementById("work").innerHTML = sectionContent({ title: "RELEVANT EXPERIENCE", experience: data.work })
+        document.getElementById("education").innerHTML = sectionContent({ title: "EDUCATION", experience: data.education })
+        document.getElementById("skills-list").innerHTML = skillsContent({
+            skill: Object.entries(data.skills).map(([k, v]) => ({
+                label: k,
+                skillLevel: v
+            }))
+        })
+    </script>
 
 </body>
 
