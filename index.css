@@ -219,6 +219,10 @@ ul.experience-list li {}
         display: none;
     }
 
+    #print-button {
+        display: none;
+    }
+
     .page-frame {
         width: 100%;
         padding: 0;
