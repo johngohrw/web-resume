@@ -19,14 +19,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .page-frame {
-    width: 814px;
-    height: 1151px;
+    max-width: 814px;
     padding: 64px;
     background: #F5F5F5;
     box-shadow: 3px 3px 13px -3px rgba(0, 0, 0, 0.2);
+
+    transition-duration: 100ms;
+    transform-origin: top center;
+    flex-shrink: 0;
+
+    border: 1px solid black;
 }
 
 @media print {
@@ -37,10 +45,10 @@ body {
 
     .page-frame {
         width: 100%;
-        height: 100%;
         padding: 0;
         background: none;
         box-shadow: none;
+        transform: none !important;
     }
 
     .contact-label a {

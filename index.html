@@ -96,6 +96,28 @@
                 skillLevel: v
             }))
         })
+
+
+        const pageEl = document.getElementById("page")
+
+        const handleResize = (width) => {
+            pageEl.setAttribute("style", `transform: scale(clamp(0, ${width / 1100}, 1)); width: clamp(0, ${width}px, 814px)`)
+        }
+
+
+        (function () {
+            const initialViewportWidthChecker = setInterval(() => {
+                handleResize(window.innerWidth)
+            }, 50)
+
+            setTimeout(() => {
+                clearInterval(initialViewportWidthChecker)
+            }, 1000)
+        })();
+
+        window.addEventListener("resize", (e) => handleResize(e.target.innerWidth))
+        window.addEventListener("deviceorientation", (e) => handleResize(e.target.innerWidth), true);
+
     </script>
 
 </body>
