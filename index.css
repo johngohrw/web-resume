@@ -226,8 +226,8 @@ ul.experience-list li {}
     .page-frame {
         width: 100%;
         padding: 0;
-        background: none;
-        box-shadow: none;
+        background: none !important;
+        box-shadow: unset !important;
         transform: none !important;
     }
 
