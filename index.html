@@ -19,13 +19,21 @@
         rel="stylesheet">
     <link href="./globals.css" rel="stylesheet">
     <link href="./index.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/favicon.ico" />
 </head>
 
 <body>
     <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="video-container">
+        <video class="bg-video" id="bg-video" autoplay muted playsinline loop>
+            <source src="./assets/videos/herobg.webm" type="video/webm" />
+            <p>your browser cannot autoplay videos! :(</p>
+        </video>
+    </div>
 
+    <button id="print-button" title="Print"><img src="./assets/icons/print.svg" /></button>
     <main class="page-frame" id="page">
         <header class="header-section">
             <div class="header-main">
@@ -97,6 +105,12 @@
                 label: k,
                 skillLevel: v
             }))
+        })
+
+        document.getElementById("bg-video").playbackRate = 0.5
+
+        document.getElementById("print-button").addEventListener("click", () => {
+            print()
         })
     </script>
 
