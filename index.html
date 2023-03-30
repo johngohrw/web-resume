@@ -30,7 +30,9 @@
         <header class="header-section">
             <div class="header-main">
                 <h1 class="text-header-title">John Goh Rengwu</h1>
-                <p class="text-header-subtitle">Creative Developer • Front-End Developer & Designer Hybrid</p>
+                <p class="text-header-subtitle">Creative Developer <span class="separator">•</span>
+                    <span>Front-End Developer & Designer Hybrid</span>
+                </p>
             </div>
             <div class="contact-container">
                 <div class="contact-item">
@@ -96,28 +98,6 @@
                 skillLevel: v
             }))
         })
-
-
-        const pageEl = document.getElementById("page")
-
-        const handleResize = (width) => {
-            pageEl.setAttribute("style", `transform: scale(clamp(0, ${width / 1100}, 1)); width: clamp(0, ${width}px, 814px)`)
-        }
-
-
-        (function () {
-            const initialViewportWidthChecker = setInterval(() => {
-                handleResize(window.innerWidth)
-            }, 50)
-
-            setTimeout(() => {
-                clearInterval(initialViewportWidthChecker)
-            }, 1000)
-        })();
-
-        window.addEventListener("resize", (e) => handleResize(e.target.innerWidth))
-        window.addEventListener("deviceorientation", (e) => handleResize(e.target.innerWidth), true);
-
     </script>
 
 </body>

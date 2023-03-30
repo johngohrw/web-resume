@@ -3,7 +3,7 @@ const sectionTemplate = `
 {{#each experience}}
     <div class="experience">
         <h3 class="with-underline text-experience-title">
-            <span style="font-weight: 500;">{{this.title}}</span> - {{this.subtitle}}
+            <span style="font-weight: 500;">{{this.title}}</span><span class="separator"> - </span>{{this.subtitle}}
         </h3>
         <div class="experience-subinfo text-subtitle">
             <div class="experience-date">{{this.date}}</div>
