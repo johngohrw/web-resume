@@ -23,11 +23,7 @@
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="video-container">
-        <video class="bg-video" id="bg-video" autoplay muted playsinline loop>
-            <source src="./assets/videos/herobg.webm" type="video/webm" />
-            <p>your browser cannot autoplay videos! :(</p>
-        </video>
+    <div class="video-container" id="bg-video-container">
     </div>
 
     <button id="print-button" title="Print"><img src="./assets/icons/print.svg" /></button>
@@ -104,11 +100,22 @@
             }))
         })
 
-        document.getElementById("bg-video").playbackRate = 0.5
-
         document.getElementById("print-button").addEventListener("click", () => {
             print()
         })
+
+        setTimeout(() => {
+            console.log("asd")
+            document.getElementById("bg-video-container").innerHTML = `<video class="bg-video" id="bg-video" style="opacity: 0 !important" autoplay muted playsinline loop>
+                <source src="./assets/videos/herobg.webm" type="video/webm" />
+                <p>your browser cannot autoplay videos! :(</p>
+            </video>`
+
+            document.getElementById("bg-video").playbackRate = 0.5
+            setTimeout(() => {
+                document.getElementById("bg-video").setAttribute("style", "")
+            }, 500)
+        }, 500)
     </script>
 
 </body>

@@ -14,7 +14,7 @@ p {
 }
 
 body {
-    background: #5A6072;
+    background: #212c3f;
     padding: 2rem;
     display: flex;
     align-items: center;
@@ -46,7 +46,6 @@ body {
 #print-button img {
     width: 2rem;
     height: 2rem;
-
     filter: invert(1);
 }
 
@@ -67,9 +66,9 @@ body {
 
     object-fit: cover;
 
-    opacity: 0.5;
+    opacity: 0.8;
     will-change: opacity;
-    transition-duration: 20ms;
+    transition-duration: 1000ms;
     filter: invert(1) hue-rotate(40deg) brightness(60%);
 }
 
