@@ -83,17 +83,26 @@
     </main>
 
     <div class="credits-section text-body">
-        I made this site!
+        I built this!
         <a href="https://github.com/johngohrw/web-resume" target="_blank">Check out the git repo here</a>
     </div>
 
     <script src="./lib/handlebars.runtime.min-v4.7.7.js"></script>
     <script type="module">
         import { data } from "./assets/data.js"
-        import { skillsTemplate, sectionTemplate } from "./assets/precompiled.js"
 
+        // Templates are pre-compiled for load performance. 
+        import { skillsTemplate, sectionTemplate } from "./assets/precompiled.js"
         const sectionContent = Handlebars.template(sectionTemplate);
         const skillsContent = Handlebars.template(skillsTemplate);
+
+        // Use this block of code instead if you want to compile your own templates.
+        // Refer here for more information on precompilation:
+        // - https://handlebarsjs.com/installation/precompilation.html#precompiling-templates-inside-nodejs
+
+        // import { skillsTemplate, sectionTemplate } from "./assets/templates.js"
+        // const sectionContent = Handlebars.compile(sectionTemplate);
+        // const skillsContent = Handlebars.compile(skillsTemplate);
 
         // execute the compiled templates & append to DOM
         document.getElementById("work").innerHTML = sectionContent({ title: "RELEVANT EXPERIENCE", experience: data.work })
@@ -109,8 +118,8 @@
             print()
         })
 
+        // delayed load for bg video.
         setTimeout(() => {
-            console.log("asd")
             document.getElementById("bg-video-container").innerHTML = `<video class="bg-video" id="bg-video" style="opacity: 0 !important" autoplay muted playsinline loop>
                 <source src="./assets/videos/herobg.webm" type="video/webm" />
                 <p>your browser cannot autoplay videos! :(</p>
