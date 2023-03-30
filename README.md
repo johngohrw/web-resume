@@ -1,1 +1,3 @@
-# web-resume
+# Web Resume
+
+A print-friendly web resume.

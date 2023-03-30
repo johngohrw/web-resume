@@ -15,10 +15,12 @@ p {
 
 body {
     background: #212c3f;
-    padding: 2rem;
+    padding: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: relative;
 }
 
 #print-button {
@@ -204,6 +206,17 @@ ul.experience-list li {}
     -webkit-print-color-adjust: exact;
 }
 
+.credits-section {
+    position: absolute;
+    bottom: 0;
+
+    color: #b3b3b3;
+}
+
+.credits-section a {
+    color: #8ca3c0;
+}
+
 
 @media print {
     body {
@@ -235,6 +248,10 @@ ul.experience-list li {}
         text-decoration: none;
         color: initial;
     }
+
+    .credits-section {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 952px) {
@@ -246,6 +263,7 @@ ul.experience-list li {}
 @media screen and (max-width: 830px) {
     body {
         padding: 1rem;
+        padding-bottom: 3rem;
     }
 }
 
@@ -299,6 +317,7 @@ ul.experience-list li {}
 @media screen and (max-width: 573px) {
     body {
         padding: 0.2rem;
+        padding-bottom: 3rem;
     }
 
     .page-frame {
