@@ -75,11 +75,11 @@ export const data = {
         "opencv": 2,
         "nginx": 2,
         "flask": 2,
+        "rust": 2,
         "websockets": 1,
         "firebase": 1,
         "three.js": 1,
         "sql": 1,
         "graphql": 1,
-        "rxjs": 1,
     }
 }
