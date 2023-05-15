@@ -30,8 +30,8 @@
     <main class="page-frame" id="page">
         <header class="header-section">
             <div class="header-main">
-                <h1 class="text-header-title">John Goh Rengwu</h1>
-                <p class="text-header-subtitle">Creative Developer <span class="separator">•</span>
+                <h1 id="profile-name" class="text-header-title">John Goh Rengwu</h1>
+                <p id="profile-tagline" class="text-header-subtitle">Creative Developer <span class="separator">•</span>
                     <span>Front-End Developer & Designer Hybrid</span>
                 </p>
             </div>
@@ -39,24 +39,25 @@
                 <div class="contact-item">
                     <img src="./assets/icons/web.svg" class="contact-icon" />
                     <div class="contact-label text-contact-item">
-                        <a href="https://johnrengwu.com" target="_blank">johnrengwu.com</a>
+                        <a id="profile-website" href="https://johnrengwu.com" target="_blank">johnrengwu.com</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <img src="./assets/icons/mail.svg" class="contact-icon" />
                     <div class="contact-label text-contact-item">
-                        <a href="mailto:johngohrw@gmail.com" target="_blank">johngohrw@gmail.com</a>
+                        <a id="profile-email" href="mailto:johngohrw@gmail.com" target="_blank">johngohrw@gmail.com</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <img src="./assets/icons/linkedin.svg" class="contact-icon" />
                     <div class="contact-label text-contact-item">
-                        <a href="https://linkedin.com/in/rengwu" target="_blank">linkedin.com/in/rengwu</a>
+                        <a id="profile-linkedin" href="https://linkedin.com/in/rengwu"
+                            target="_blank">linkedin.com/in/rengwu</a>
                     </div>
                 </div>
                 <div class="contact-item">
                     <img src="./assets/icons/location.svg" class="contact-icon" />
-                    <div class="contact-label text-contact-item">Kuala Lumpur, Malaysia</div>
+                    <div id="profile-location" class="contact-label text-contact-item">Kuala Lumpur, Malaysia</div>
                 </div>
             </div>
         </header>
@@ -64,9 +65,9 @@
         <section id="education"></section>
         <section>
             <div class="skills-title-section">
-                <h2 class="section-title text-section-title">SKILLS & TECHNOLOGIES</h2>
+                <h2 id="title-skills" class="section-title text-section-title">SKILLS & TECHNOLOGIES</h2>
                 <div class="skills-legend">
-                    <div class="skills-legend-label text-subtitle">rarely/past</div>
+                    <div id="label-rarely" class="skills-legend-label text-subtitle">rarely/past</div>
                     <div class="skills-swatch">
                         <div class="swatch" style="background: var(--color-skill-1)"></div>
                         <div class="swatch" style="background: var(--color-skill-2)"></div>
@@ -74,7 +75,7 @@
                         <div class="swatch" style="background: var(--color-skill-4)"></div>
                         <div class="swatch" style="background: var(--color-skill-5)"></div>
                     </div>
-                    <div class="skills-legend-label text-subtitle">often/current</div>
+                    <div id="label-often" class="skills-legend-label text-subtitle">often/current</div>
                 </div>
             </div>
             <div class="skills-list text-body" id="skills-list">
@@ -82,14 +83,69 @@
         </section>
     </main>
 
-    <div class="credits-section text-body">
-        I built this!
-        <a href="https://github.com/johngohrw/web-resume" target="_blank">Check out the git repo here</a>
+    <div class="credits-section text-body" style="width: 100%;
+        max-width: 850px; display: flex; flex-flow: row; justify-content: space-between;">
+        <div>
+            I built this!
+            <a href="https://github.com/johngohrw/web-resume" target="_blank">Check out the git repo here</a>
+        </div>
+        <div id="lang-links">
+        </div>
     </div>
 
     <script src="./lib/handlebars.runtime.min-v4.7.7.js"></script>
     <script type="module">
-        import { data } from "./assets/data.js"
+        const url = new URL(window.location.href);
+        const searchParams = new URLSearchParams(url.search);
+        const options = Array.from(url.searchParams.entries()).reduce((acc, curr) => {
+            acc[curr[0]] = curr[1]
+            return acc
+        }, {})
+        const lang = options?.lang || "en"
+        let { data } = await import(`./assets/data/${lang}.js`)
+
+        const localeText = {
+            title: {
+                experience: {
+                    en: "RELEVANT EXPERIENCE",
+                    cn: "相关工作经历"
+                },
+                education: {
+                    en: "EDUCATION",
+                    cn: "求学经历"
+                },
+                skills: {
+                    en: "SKILLS & TECHNOLOGIES",
+                    cn: "技能和技术"
+                }
+            },
+            label: {
+                rarely: { en: "rarely/past", cn: "经验少 / 不经常" },
+                often: { en: "often/current", cn: "经验多 / 经常" }
+            },
+            profile: {
+                name: {
+                    en: "John Goh Rengwu",
+                    cn: "吴仁武"
+                },
+                tagline: {
+                    en: "Creative Developer • Front-End Developer & Designer Hybrid",
+                    cn: "创意开发人员 • 前端开发人员 • 设计师"
+                },
+                location: {
+                    en: "Kuala Lumpur, Malaysia",
+                    cn: "吉隆坡, 马来西亚"
+                }
+            }
+        }
+
+        function getLocaleText(keys, lang) {
+            let ans = keys.reduce((acc, curr) => {
+                acc = acc[curr]
+                return acc
+            }, localeText)
+            return ans[lang] || "(locale text not found)"
+        }
 
         // Templates are pre-compiled for load performance. 
         import { skillsTemplate, sectionTemplate } from "./assets/precompiled.js"
@@ -105,8 +161,8 @@
         // const skillsContent = Handlebars.compile(skillsTemplate);
 
         // execute the compiled templates & append to DOM
-        document.getElementById("work").innerHTML = sectionContent({ title: "RELEVANT EXPERIENCE", experience: data.work })
-        document.getElementById("education").innerHTML = sectionContent({ title: "EDUCATION", experience: data.education })
+        document.getElementById("work").innerHTML = sectionContent({ title: getLocaleText(["title", "experience"], lang), experience: data.work })
+        document.getElementById("education").innerHTML = sectionContent({ title: getLocaleText(["title", "education"], lang), experience: data.education })
         document.getElementById("skills-list").innerHTML = skillsContent({
             skill: Object.entries(data.skills).map(([k, v]) => ({
                 label: k,
@@ -116,6 +172,26 @@
 
         document.getElementById("print-button").addEventListener("click", () => {
             print()
+        })
+
+        const innerLinks = [["EN", "?lang=en"], ["CN", "?lang=cn"]]
+        document.getElementById("lang-links").innerHTML = innerLinks
+            .map(([label, URL]) => `<a href="${window.location.origin + window.location.pathname + URL}">${label}</a>`)
+            .reduce((acc, curr) => {
+                acc += curr
+                return acc
+            }, "")
+
+        const idToLocaleTextMap = {
+            "title-skills": ["title", "skills"],
+            "label-rarely": ["label", "rarely"],
+            "label-often": ["label", "often"],
+            "profile-name": ["profile", "name"],
+            "profile-tagline": ["profile", "tagline"],
+            "profile-location": ["profile", "location"],
+        }
+        Object.entries(idToLocaleTextMap).forEach(([id, keyArr]) => {
+            document.getElementById(id).innerHTML = getLocaleText(keyArr, lang)
         })
 
         // delayed load for bg video.

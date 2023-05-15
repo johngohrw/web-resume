@@ -217,6 +217,10 @@ ul.experience-list li {}
     color: #8ca3c0;
 }
 
+#lang-links a {
+    margin-left: 0.5rem;
+}
+
 
 @media print {
     body {
