@@ -47,7 +47,7 @@ export const data = {
             "title": "蒙纳士大学 (Monash University)",
             "subtitle": "计算机科学学士 (Bachelor of Computer Science)",
             "location": "马来西亚",
-            "date": "February 2016 - May 2019",
+            "date": "2016年2月 - 2019年5月",
             "items": [
                 "获得马来西亚MDEC“2018年大挑战”黑客马拉松比赛冠军。",
                 "在2018年第一学期全球范围内,成为蒙纳士所有校区Advanced Programming (FIT3140)课程中得分最高的学生。"
