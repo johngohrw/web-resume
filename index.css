@@ -254,7 +254,7 @@ ul.experience-list li {}
     }
 
     .credits-section {
-        display: none;
+        display: none !important;
     }
 }
 
